@@ -6,13 +6,17 @@ import { useEffect, useState } from "react";
 
 function Inicio(){
 
-    const [videos , setvideos ]=useState([]);
+    const [videos, setVideos] = useState([]);
 
-    useEffect(()=>{
-        fetch("https://my-json-server.typicode.com/PGPLAYER15/alura-cinema-api/videos")
-        .then(response => response.json())
-        .then(data =>{setvideos(data)})
-    },[])
+  useEffect(() => {
+    fetch(
+      "https://my-json-server.typicode.com/PGPLAYER15/alura-cinema-api/videos"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setVideos(data);
+      });
+  }, []);
 
     return(
         <>
@@ -25,8 +29,7 @@ function Inicio(){
                 {videos.map((video)=>{
                         return <Card {...video} key={video.id}/>
                 
-                    })
-                }
+                })}
             </section>
         </>
     )
